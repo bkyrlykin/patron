@@ -1,0 +1,223 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #333;
+}
+
+.book {
+    position: relative;
+    width: 80%;
+    height: 90vh;
+    margin: 5vh auto;
+    perspective: 1500px;
+    touch-action: pan-y; /* вертикальная прокрутка, но нет горизонтальной */
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    transform-origin: left;
+    transform: rotateY(0deg);
+    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+    /* скрытие переполнения */
+    overflow: hidden;
+}
+
+.page:nth-child(2) {
+    transform: rotateY(-180deg);
+    background: #f0f0f0;
+}
+
+.content {
+    padding: 40px;
+    /* если текст выходит за границы - прокрутка */
+    overflow-y: auto;
+    /* что текст верно переносится */
+    word-wrap: break-word;
+    max-height: 100%;
+}
+
+h1, p {
+    /* можно уменьшить размер шрифта */
+    font-size: 18px;
+}
+
+/* адаптив для мобильных */
+@media (max-width: 480px) {
+    .content {
+        padding: 10px;
+        /* прокрутка для мобильных */
+        overflow-y: scroll;
+    }
+
+    h1, p {
+        font-size: 14px; /* меньший размер текста на мобильных  */
+    }
+}
+
+/* стили для кнопок (по умолчанию) */
+button {
+    position: absolute;
+    bottom: 20px;
+    padding: 10px 20px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* скрыть кнопки на мобильных*/
+@media (max-width: 768px) {
+    button {
+        display: none; /* полное скрытие кнопок на экранах с шириной менее 768px */
+    }
+}
+
+/* показывает кнопки на экранах больше 768px */
+@media (min-width: 769px) {
+    button {
+        display: block; /* отображение кнопок на экранах больше 769px */
+    }
+}
+
+button:hover {
+    background-color: #666;
+}
+
+.prev-page {
+    left: 20px;
+}
+
+.next-page {
+    right: 20px;
+}
+
+.author-rights {
+    position: absolute;
+    right: 20px;
+    bottom: 100px;
+    font-size: 15px;
+    color: #888;
+}
+
+.author-rights-two {
+    position: absolute;
+    right: 595px;
+    bottom: 580px;
+    font-size: 13px;
+    color: #888;
+}
+
+.part-two, .part-three
+.part-four, .part-five
+.part-six {
+    position: absolute;
+    font-size: 40px;
+    color: black;
+}
+
+/* позиционирование элементов */
+.part-two {
+    right: 300px;
+    bottom: 330px;
+}
+
+.part-three {
+    right: 365px;
+    bottom: 330px;
+}
+
+.part-four {
+    right: 220px;
+    bottom: 330px;
+}
+
+.part-five {
+    right: 35px;
+    bottom: 330px;
+}
+
+.part-six {
+    right: 232px;
+    bottom: 330px;
+}
+
+/* адаптив для планшетов и мобильных */
+@media (max-width: 768px) {
+    .book {
+        width: 90%;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .author-rights, .author-rights-two {
+        font-size: 12px;
+    }
+
+    .part-two, .part-three, .part-four, .part-five, .part-six {
+        font-size: 30px;
+        right: 50px; /* перенос ближе к центру на маленьких экранах */
+        bottom: 200px;
+    }
+}
+
+/* адаптив для маленьких экранов */
+@media (max-width: 480px) {
+    .book {
+        width: 100%;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .author-rights
+    .author-rights-two {
+        font-size: 10px;
+    }
+
+    .part-two
+    .part-three
+    .part-four
+    .part-five
+    .part-six {
+        font-size: 24px;
+        right: 20px;
+        bottom: 150px;
+    }
+}
